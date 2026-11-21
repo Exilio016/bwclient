@@ -407,15 +407,24 @@ i32 main (i32 argc, char **argv) {
             rofi_error("No option selected. Exiting...\n");
             res = 4; goto end;
         }
-        bfu_string_f item = bw_get(items[selected].id, option);
-        if (item.size > 0) {
-            wl_copy(item);
+        if (bfu_string_eq(&option, "totp")) {
+            bfu_string_f item = bw_get(items[selected].id, option);
+            if (item.size > 0) {
+                wl_copy(item);
+            }
+            else {
+                bfu_string_f err = {0};
+                bfu_string_format(&err, "%s not found!", option.data);
+                rofi_error(err.data);
+                res = 5; goto end;
+            }
+
+        }
+        else if (bfu_string_eq(&option, "username")) {
+            wl_copy(items[selected].username);
         }
         else {
-            bfu_string_f err = {0};
-            bfu_string_format(&err, "%s not found!", option.data);
-            rofi_error(err.data);
-            res = 5; goto end;
+            wl_copy(items[selected].password);
         }
     }
     else if (mode == MODE_EDIT) {
