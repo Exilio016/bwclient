@@ -15,9 +15,9 @@ typedef enum {
 } mode;
 
 void print_usage() {
-    printf("USAGE: bwclient [-c|--create=<url>] [-e|--edit=<url>] [-s|--search=<url>]\n");
+    printf("USAGE: bwclient [-c|--create <url>] [-e|--edit=<url>] [-s|--search=<url>]\n");
     printf("Options:\n");
-    printf("-c --create=[<url>]        Create a new entry in bitwarden. Can optionally take an URL as argument\n");
+    printf("-c --create <url>]         Create a new entry in bitwarden. It take an URL as argument\n");
     printf("-e --edit=[<url>]          Search and edit an entry in bitwarden. Can optionally take an URL as argument\n");
     printf("-s --search=[<url>]        Search an entry in bitwarden. Can optionally take an URL as argument\n");
 }
