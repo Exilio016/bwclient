@@ -183,6 +183,8 @@ void free_bw_items(bfu_array(bw_item) items) {
         bfu_string_delete(&items[i].id);
         bfu_string_delete(&items[i].name);
         bfu_string_delete(&items[i].username);
+        bfu_string_delete(&items[i].password);
+        bfu_string_delete(&items[i].totp);
     }
 }
 
